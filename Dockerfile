@@ -1,5 +1,5 @@
 # base node image
-FROM node:18-bookworm-slim as base
+FROM node:20-bookworm-slim as base
 
 # install open ssl and sqlite3 for prisma
 # ffmpeg for the call kent functionality
@@ -33,6 +33,7 @@ FROM base as build
 
 ARG COMMIT_SHA
 ENV COMMIT_SHA=$COMMIT_SHA
+ENV SENTRY_UPLOAD="true"
 
 RUN mkdir /app/
 WORKDIR /app/
@@ -48,7 +49,14 @@ RUN npx prisma generate
 
 # app code changes all the time
 ADD . .
-RUN npm run build
+
+ENV SENTRY_ORG="kent-c-dodds-tech-llc"
+ENV SENTRY_PROJECT="kcd-node"
+
+# Mount the secret and set it as an environment variable and run the build
+RUN --mount=type=secret,id=SENTRY_AUTH_TOKEN \
+    export SENTRY_AUTH_TOKEN=$(cat /run/secrets/SENTRY_AUTH_TOKEN) && \
+    npm run build
 
 # build smaller image for running
 FROM base
@@ -57,14 +65,15 @@ ENV FLY="true"
 ENV LITEFS_DIR="/litefs"
 
 ENV DATABASE_FILENAME="sqlite.db"
-ENV DATABASE_PATH="/$LITEFS_DIR/$DATABASE_FILENAME"
+ENV DATABASE_PATH="$LITEFS_DIR/$DATABASE_FILENAME"
 ENV DATABASE_URL="file:$DATABASE_PATH"
 ENV INTERNAL_PORT="8080"
 ENV PORT="8081"
 ENV NODE_ENV="production"
-# ENV DISABLE_METRONOME="true"
+# For WAL support: https://github.com/prisma/prisma-engines/issues/4675#issuecomment-1914383246
+ENV PRISMA_SCHEMA_DISABLE_ADVISORY_LOCK = "1"
 ENV CACHE_DATABASE_FILENAME="cache.db"
-ENV CACHE_DATABASE_PATH="/$LITEFS_DIR/$CACHE_DATABASE_FILENAME"
+ENV CACHE_DATABASE_PATH="$LITEFS_DIR/$CACHE_DATABASE_FILENAME"
 # Make SQLite CLI accessible
 RUN echo "#!/bin/sh\nset -x\nsqlite3 \$DATABASE_PATH" > /usr/local/bin/database-cli && chmod +x /usr/local/bin/database-cli
 RUN echo "#!/bin/sh\nset -x\nsqlite3 \$CACHE_DATABASE_PATH" > /usr/local/bin/cache-database-cli && chmod +x /usr/local/bin/cache-database-cli
@@ -81,7 +90,7 @@ COPY --from=build /app/server-build /app/server-build
 ADD . .
 
 # prepare for litefs
-COPY --from=flyio/litefs:0.5.10 /usr/local/bin/litefs /usr/local/bin/litefs
+COPY --from=flyio/litefs:0.5.11 /usr/local/bin/litefs /usr/local/bin/litefs
 ADD other/litefs.yml /etc/litefs.yml
 RUN mkdir -p /data ${LITEFS_DIR}
 

@@ -1,58 +1,57 @@
-import {json, type HeadersFunction, type LoaderFunction} from '@remix-run/node'
-import {Outlet} from '@remix-run/react'
-import {type KCDHandle, type Workshop} from '~/types.ts'
-import {reuseUsefulLoaderHeaders} from '~/utils/misc.tsx'
-import {useMatchLoaderData} from '~/utils/providers.tsx'
-import {getServerTimeHeader} from '~/utils/timing.server.ts'
 import {
-  getScheduledEvents,
-  type WorkshopEvent,
-} from '~/utils/workshop-tickets.server.ts'
-import {getWorkshops} from '~/utils/workshops.server.ts'
+	type SerializeFrom,
+	json,
+	type HeadersFunction,
+	type LoaderFunctionArgs,
+} from '@remix-run/node'
+import { Outlet } from '@remix-run/react'
+import { type KCDHandle } from '#app/types.ts'
+import { reuseUsefulLoaderHeaders, typedBoolean } from '#app/utils/misc.tsx'
+import { useMatchLoaderData } from '#app/utils/providers.tsx'
+import { getServerTimeHeader } from '#app/utils/timing.server.ts'
+import { getScheduledEvents } from '#app/utils/workshop-tickets.server.ts'
+import { getWorkshops } from '#app/utils/workshops.server.ts'
 
-export const handle: KCDHandle & {id: string} = {
-  id: 'workshops',
+export const handle: KCDHandle & { id: string } = {
+	id: 'workshops',
 }
 
-export type LoaderData = {
-  workshops: Array<Workshop>
-  workshopEvents: Array<WorkshopEvent>
-  tags: Array<string>
-}
+export async function loader({ request }: LoaderFunctionArgs) {
+	const timings = {}
+	const [workshops, workshopEvents] = await Promise.all([
+		getWorkshops({ request, timings }),
+		getScheduledEvents({ request, timings }),
+	])
 
-export const loader: LoaderFunction = async ({request}) => {
-  const timings = {}
-  const [workshops, workshopEvents] = await Promise.all([
-    getWorkshops({request, timings}),
-    getScheduledEvents({request, timings}),
-  ])
+	const tags = new Set<string>()
+	for (const workshop of workshops) {
+		for (const category of workshop.categories) {
+			tags.add(category)
+		}
+	}
 
-  const tags = new Set<string>()
-  for (const workshop of workshops) {
-    for (const category of workshop.categories) {
-      tags.add(category)
-    }
-  }
-
-  const data: LoaderData = {
-    workshops,
-    workshopEvents,
-    tags: Array.from(tags),
-  }
-  const headers = {
-    'Cache-Control': 'public, max-age=3600',
-    Vary: 'Cookie',
-    'Server-Timing': getServerTimeHeader(timings),
-  }
-  return json(data, {headers})
+	const headers = {
+		'Cache-Control': 'public, max-age=3600',
+		Vary: 'Cookie',
+		'Server-Timing': getServerTimeHeader(timings),
+	}
+	return json(
+		{
+			workshops: workshops.filter(typedBoolean),
+			workshopEvents: workshopEvents.filter(typedBoolean),
+			tags: Array.from(tags),
+		},
+		{ headers },
+	)
 }
 
 export const headers: HeadersFunction = reuseUsefulLoaderHeaders
 
 function WorkshopsHome() {
-  return <Outlet />
+	return <Outlet />
 }
 
 export default WorkshopsHome
 
-export const useWorkshopsData = () => useMatchLoaderData<LoaderData>(handle.id)
+export const useWorkshopsData = () =>
+	useMatchLoaderData<SerializeFrom<typeof loader>>(handle.id)

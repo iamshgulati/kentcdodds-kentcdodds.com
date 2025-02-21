@@ -1,8 +1,7 @@
 ---
 title: Implementing a simple state machine library in JavaScript
 date: 2020-01-20
-description:
-  Let's write a state machine abstraction together to understand it better
+description: Let's write a state machine abstraction together to understand it better
 categories:
   - state
 meta:
@@ -16,8 +15,7 @@ meta:
     - library
     - abstraction
 bannerCloudinaryId: unsplash/photo-1575573569545-351853b40d7a
-bannerCredit:
-  Photo by [Paweł Czerwiński](https://unsplash.com/photos/0-hXSg0oRjg)
+bannerCredit: Photo by [Paweł Czerwiński](https://unsplash.com/photos/0-hXSg0oRjg)
 ---
 
 **[Watch "Implement a simple Finite State Machine library in JavaScript" on egghead.io](https://egghead.io/lessons/javascript-implement-a-simple-finite-state-machine-library-in-javascript?pl=kent-s-blog-posts-as-screencasts-eefa540c)**
@@ -39,7 +37,7 @@ that, check out [xstate](https://xstate.js.org/).
 
 There's a brilliant website
 ([statecharts.github.io](https://statecharts.github.io/) by
-[Erik Mogensen](https://twitter.com/mogsie)) where you can learn a lot about
+[Erik Mogensen](https://x.com/mogsie)) where you can learn a lot about
 this concept called "State Charts." (A state chart is basically a state machine
 with a few additional characteristics and it's another thing I'd recommend
 learning about.) On that website, there's a page titled
@@ -72,15 +70,15 @@ our initial code:
 
 ```js
 function createMachine(stateMachineDefinition) {
-  const machine = {
-    // machine object
-  }
-  return machine
+	const machine = {
+		// machine object
+	}
+	return machine
 }
 
 // here's how we'll create the state machine
 const machine = createMachine({
-  // state machine definition object here...
+	// state machine definition object here...
 })
 
 // here's how we use the state machine
@@ -109,7 +107,7 @@ value should be:
 
 ```js lines=2
 const machine = createMachine({
-  initialState: 'off',
+	initialState: 'off',
 })
 ```
 
@@ -117,9 +115,9 @@ And we'll probably want to have a definition for our states as well:
 
 ```js lines=3,4
 const machine = createMachine({
-  initialState: 'off',
-  off: {},
-  on: {},
+	initialState: 'off',
+	off: {},
+	on: {},
 })
 ```
 
@@ -133,19 +131,19 @@ enter and on exit for a given state:
 
 ```js lines=4-7,10-13
 const machine = createMachine({
-  initialState: 'off',
-  off: {
-    actions: {
-      onEnter() {},
-      onExit() {},
-    },
-  },
-  on: {
-    actions: {
-      onEnter() {},
-      onExit() {},
-    },
-  },
+	initialState: 'off',
+	off: {
+		actions: {
+			onEnter() {},
+			onExit() {},
+		},
+	},
+	on: {
+		actions: {
+			onEnter() {},
+			onExit() {},
+		},
+	},
 })
 ```
 
@@ -153,27 +151,27 @@ And we'll add console.logs so we can check our work later.
 
 ```js lines=6,9,16,19
 const machine = createMachine({
-  initialState: 'off',
-  off: {
-    actions: {
-      onEnter() {
-        console.log('off: onEnter')
-      },
-      onExit() {
-        console.log('off: onExit')
-      },
-    },
-  },
-  on: {
-    actions: {
-      onEnter() {
-        console.log('on: onEnter')
-      },
-      onExit() {
-        console.log('on: onExit')
-      },
-    },
-  },
+	initialState: 'off',
+	off: {
+		actions: {
+			onEnter() {
+				console.log('off: onEnter')
+			},
+			onExit() {
+				console.log('off: onExit')
+			},
+		},
+	},
+	on: {
+		actions: {
+			onEnter() {
+				console.log('on: onEnter')
+			},
+			onExit() {
+				console.log('on: onExit')
+			},
+		},
+	},
 })
 ```
 
@@ -185,29 +183,29 @@ Alrighty, let's add a `transitions` property to our state definitions:
 
 ```js lines=12,23
 const machine = createMachine({
-  initialState: 'off',
-  off: {
-    actions: {
-      onEnter() {
-        console.log('off: onEnter')
-      },
-      onExit() {
-        console.log('off: onExit')
-      },
-    },
-    transitions: {},
-  },
-  on: {
-    actions: {
-      onEnter() {
-        console.log('on: onEnter')
-      },
-      onExit() {
-        console.log('on: onExit')
-      },
-    },
-    transitions: {},
-  },
+	initialState: 'off',
+	off: {
+		actions: {
+			onEnter() {
+				console.log('off: onEnter')
+			},
+			onExit() {
+				console.log('off: onExit')
+			},
+		},
+		transitions: {},
+	},
+	on: {
+		actions: {
+			onEnter() {
+				console.log('on: onEnter')
+			},
+			onExit() {
+				console.log('on: onExit')
+			},
+		},
+		transitions: {},
+	},
 })
 ```
 
@@ -218,33 +216,33 @@ add a `switch` property to our `transitions` object:
 
 ```js lines=13,26
 const machine = createMachine({
-  initialState: 'off',
-  off: {
-    actions: {
-      onEnter() {
-        console.log('off: onEnter')
-      },
-      onExit() {
-        console.log('off: onExit')
-      },
-    },
-    transitions: {
-      switch: {},
-    },
-  },
-  on: {
-    actions: {
-      onEnter() {
-        console.log('on: onEnter')
-      },
-      onExit() {
-        console.log('on: onExit')
-      },
-    },
-    transitions: {
-      switch: {},
-    },
-  },
+	initialState: 'off',
+	off: {
+		actions: {
+			onEnter() {
+				console.log('off: onEnter')
+			},
+			onExit() {
+				console.log('off: onExit')
+			},
+		},
+		transitions: {
+			switch: {},
+		},
+	},
+	on: {
+		actions: {
+			onEnter() {
+				console.log('on: onEnter')
+			},
+			onExit() {
+				console.log('on: onExit')
+			},
+		},
+		transitions: {
+			switch: {},
+		},
+	},
 })
 ```
 
@@ -259,37 +257,37 @@ to the target state:
 
 ```js lines=14,29
 const machine = createMachine({
-  initialState: 'off',
-  off: {
-    actions: {
-      onEnter() {
-        console.log('off: onEnter')
-      },
-      onExit() {
-        console.log('off: onExit')
-      },
-    },
-    transitions: {
-      switch: {
-        target: 'on',
-      },
-    },
-  },
-  on: {
-    actions: {
-      onEnter() {
-        console.log('on: onEnter')
-      },
-      onExit() {
-        console.log('on: onExit')
-      },
-    },
-    transitions: {
-      switch: {
-        target: 'off',
-      },
-    },
-  },
+	initialState: 'off',
+	off: {
+		actions: {
+			onEnter() {
+				console.log('off: onEnter')
+			},
+			onExit() {
+				console.log('off: onExit')
+			},
+		},
+		transitions: {
+			switch: {
+				target: 'on',
+			},
+		},
+	},
+	on: {
+		actions: {
+			onEnter() {
+				console.log('on: onEnter')
+			},
+			onExit() {
+				console.log('on: onExit')
+			},
+		},
+		transitions: {
+			switch: {
+				target: 'off',
+			},
+		},
+	},
 })
 ```
 
@@ -313,43 +311,43 @@ we'll put a console.log in there to keep track of it later).
 
 ```js lines=15-17,33-35
 const machine = createMachine({
-  initialState: 'off',
-  off: {
-    actions: {
-      onEnter() {
-        console.log('off: onEnter')
-      },
-      onExit() {
-        console.log('off: onExit')
-      },
-    },
-    transitions: {
-      switch: {
-        target: 'on',
-        action() {
-          console.log('transition action for "switch" in "off" state')
-        },
-      },
-    },
-  },
-  on: {
-    actions: {
-      onEnter() {
-        console.log('on: onEnter')
-      },
-      onExit() {
-        console.log('on: onExit')
-      },
-    },
-    transitions: {
-      switch: {
-        target: 'off',
-        action() {
-          console.log('transition action for "switch" in "on" state')
-        },
-      },
-    },
-  },
+	initialState: 'off',
+	off: {
+		actions: {
+			onEnter() {
+				console.log('off: onEnter')
+			},
+			onExit() {
+				console.log('off: onExit')
+			},
+		},
+		transitions: {
+			switch: {
+				target: 'on',
+				action() {
+					console.log('transition action for "switch" in "off" state')
+				},
+			},
+		},
+	},
+	on: {
+		actions: {
+			onEnter() {
+				console.log('on: onEnter')
+			},
+			onExit() {
+				console.log('on: onExit')
+			},
+		},
+		transitions: {
+			switch: {
+				target: 'off',
+				action() {
+					console.log('transition action for "switch" in "on" state')
+				},
+			},
+		},
+	},
 })
 ```
 
@@ -362,7 +360,7 @@ When a user wants to create a machine, we've already specified this as the API:
 
 ```js
 const machine = createMachine({
-  // state machine definition object
+	// state machine definition object
 })
 
 machine.value // current state
@@ -377,10 +375,10 @@ So here's what we need for our initial implementation of `createMachine`:
 
 ```js
 function createMachine(stateMachineDefinition) {
-  const machine = {
-    // machine object
-  }
-  return machine
+	const machine = {
+		// machine object
+	}
+	return machine
 }
 ```
 
@@ -388,13 +386,13 @@ Let's go ahead and add the `value` and `transition` properties:
 
 ```js lines=3-6
 function createMachine(stateMachineDefinition) {
-  const machine = {
-    value: stateMachineDefinition.initialState,
-    transition(currentState, event) {
-      return machine.value
-    },
-  }
-  return machine
+	const machine = {
+		value: stateMachineDefinition.initialState,
+		transition(currentState, event) {
+			return machine.value
+		},
+	}
+	return machine
 }
 ```
 
@@ -410,16 +408,16 @@ transition.
 
 ```js lines=5-6
 function createMachine(stateMachineDefinition) {
-  const machine = {
-    value: stateMachineDefinition.initialState,
-    transition(currentState, event) {
-      const currentStateDefinition = stateMachineDefinition[currentState]
-      const destinationTransition = currentStateDefinition.transitions[event]
+	const machine = {
+		value: stateMachineDefinition.initialState,
+		transition(currentState, event) {
+			const currentStateDefinition = stateMachineDefinition[currentState]
+			const destinationTransition = currentStateDefinition.transitions[event]
 
-      return machine.value
-    },
-  }
-  return machine
+			return machine.value
+		},
+	}
+	return machine
 }
 ```
 
@@ -445,19 +443,19 @@ then we'll continue, otherwise, we'll exit early:
 
 ```js lines=7-9
 function createMachine(stateMachineDefinition) {
-  const machine = {
-    value: stateMachineDefinition.initialState,
-    transition(currentState, event) {
-      const currentStateDefinition = stateMachineDefinition[currentState]
-      const destinationTransition = currentStateDefinition.transitions[event]
-      if (!destinationTransition) {
-        return
-      }
+	const machine = {
+		value: stateMachineDefinition.initialState,
+		transition(currentState, event) {
+			const currentStateDefinition = stateMachineDefinition[currentState]
+			const destinationTransition = currentStateDefinition.transitions[event]
+			if (!destinationTransition) {
+				return
+			}
 
-      return machine.value
-    },
-  }
-  return machine
+			return machine.value
+		},
+	}
+	return machine
 }
 ```
 
@@ -470,26 +468,26 @@ to get the destination state definition as well. Let's do all of that:
 
 ```js lines=10-16
 function createMachine(stateMachineDefinition) {
-  const machine = {
-    value: stateMachineDefinition.initialState,
-    transition(currentState, event) {
-      const currentStateDefinition = stateMachineDefinition[currentState]
-      const destinationTransition = currentStateDefinition.transitions[event]
-      if (!destinationTransition) {
-        return
-      }
-      const destinationState = destinationTransition.target
-      const destinationStateDefinition =
-        stateMachineDefinition[destinationState]
+	const machine = {
+		value: stateMachineDefinition.initialState,
+		transition(currentState, event) {
+			const currentStateDefinition = stateMachineDefinition[currentState]
+			const destinationTransition = currentStateDefinition.transitions[event]
+			if (!destinationTransition) {
+				return
+			}
+			const destinationState = destinationTransition.target
+			const destinationStateDefinition =
+				stateMachineDefinition[destinationState]
 
-      destinationTransition.action()
-      currentStateDefinition.actions.onExit()
-      destinationStateDefinition.actions.onEnter()
+			destinationTransition.action()
+			currentStateDefinition.actions.onExit()
+			destinationStateDefinition.actions.onEnter()
 
-      return machine.value
-    },
-  }
-  return machine
+			return machine.value
+		},
+	}
+	return machine
 }
 ```
 
@@ -503,28 +501,28 @@ We've got to update the machine's value which is the `target` for the transition
 
 ```js lines=18
 function createMachine(stateMachineDefinition) {
-  const machine = {
-    value: stateMachineDefinition.initialState,
-    transition(currentState, event) {
-      const currentStateDefinition = stateMachineDefinition[currentState]
-      const destinationTransition = currentStateDefinition.transitions[event]
-      if (!destinationTransition) {
-        return
-      }
-      const destinationState = destinationTransition.target
-      const destinationStateDefinition =
-        stateMachineDefinition[destinationState]
+	const machine = {
+		value: stateMachineDefinition.initialState,
+		transition(currentState, event) {
+			const currentStateDefinition = stateMachineDefinition[currentState]
+			const destinationTransition = currentStateDefinition.transitions[event]
+			if (!destinationTransition) {
+				return
+			}
+			const destinationState = destinationTransition.target
+			const destinationStateDefinition =
+				stateMachineDefinition[destinationState]
 
-      destinationTransition.action()
-      currentStateDefinition.actions.onExit()
-      destinationStateDefinition.actions.onEnter()
+			destinationTransition.action()
+			currentStateDefinition.actions.onExit()
+			destinationStateDefinition.actions.onEnter()
 
-      machine.value = destinationState
+			machine.value = destinationState
 
-      return machine.value
-    },
-  }
-  return machine
+			return machine.value
+		},
+	}
+	return machine
 }
 ```
 
@@ -534,68 +532,68 @@ Alright, so here's the whole thing:
 
 ```js
 function createMachine(stateMachineDefinition) {
-  const machine = {
-    value: stateMachineDefinition.initialState,
-    transition(currentState, event) {
-      const currentStateDefinition = stateMachineDefinition[currentState]
-      const destinationTransition = currentStateDefinition.transitions[event]
-      if (!destinationTransition) {
-        return
-      }
-      const destinationState = destinationTransition.target
-      const destinationStateDefinition =
-        stateMachineDefinition[destinationState]
+	const machine = {
+		value: stateMachineDefinition.initialState,
+		transition(currentState, event) {
+			const currentStateDefinition = stateMachineDefinition[currentState]
+			const destinationTransition = currentStateDefinition.transitions[event]
+			if (!destinationTransition) {
+				return
+			}
+			const destinationState = destinationTransition.target
+			const destinationStateDefinition =
+				stateMachineDefinition[destinationState]
 
-      destinationTransition.action()
-      currentStateDefinition.actions.onExit()
-      destinationStateDefinition.actions.onEnter()
+			destinationTransition.action()
+			currentStateDefinition.actions.onExit()
+			destinationStateDefinition.actions.onEnter()
 
-      machine.value = destinationState
+			machine.value = destinationState
 
-      return machine.value
-    },
-  }
-  return machine
+			return machine.value
+		},
+	}
+	return machine
 }
 
 const machine = createMachine({
-  initialState: 'off',
-  off: {
-    actions: {
-      onEnter() {
-        console.log('off: onEnter')
-      },
-      onExit() {
-        console.log('off: onExit')
-      },
-    },
-    transitions: {
-      switch: {
-        target: 'on',
-        action() {
-          console.log('transition action for "switch" in "off" state')
-        },
-      },
-    },
-  },
-  on: {
-    actions: {
-      onEnter() {
-        console.log('on: onEnter')
-      },
-      onExit() {
-        console.log('on: onExit')
-      },
-    },
-    transitions: {
-      switch: {
-        target: 'off',
-        action() {
-          console.log('transition action for "switch" in "on" state')
-        },
-      },
-    },
-  },
+	initialState: 'off',
+	off: {
+		actions: {
+			onEnter() {
+				console.log('off: onEnter')
+			},
+			onExit() {
+				console.log('off: onExit')
+			},
+		},
+		transitions: {
+			switch: {
+				target: 'on',
+				action() {
+					console.log('transition action for "switch" in "off" state')
+				},
+			},
+		},
+	},
+	on: {
+		actions: {
+			onEnter() {
+				console.log('on: onEnter')
+			},
+			onExit() {
+				console.log('on: onExit')
+			},
+		},
+		transitions: {
+			switch: {
+				target: 'off',
+				action() {
+					console.log('transition action for "switch" in "on" state')
+				},
+			},
+		},
+	},
 })
 
 let state = machine.value
@@ -627,7 +625,7 @@ And you can play around with this
 I hope you found that interesting, informative, and entertaining. If you're
 really like to dive into this stuff further, then definitely give
 [statecharts.github.io](https://statecharts.github.io/) a look and give
-[David Khourshid](https://twitter.com/DavidKPiano) a follow. He's on a personal
+[David Khourshid](https://x.com/DavidKPiano) a follow. He's on a personal
 mission to make state machines more approachable and is responsible for my own
 interest in the concept.
 
