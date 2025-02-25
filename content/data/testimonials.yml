@@ -51,10 +51,10 @@
   company: Student
   link: https://ashwinkhode.codes/
   testimonial: >-
-    KCD Discord Community is the best community out there. When I first joined
-    the server I was amazed by the environment that I was in! Curated channels,
-    great moderation, and great people to help you all the time. It made me feel
-    like home <3
+    Epic Web Discord Community is the best community out there. When I first
+    joined the server I was amazed by the environment that I was in! Curated
+    channels, great moderation, and great people to help you all the time. It
+    made me feel like home <3
 
 - author: Bernard Baker
   priority: 3
@@ -75,7 +75,7 @@
     - Discord Community
   cloudinaryId: kentcdodds.com/testimonials/arpanchattopadhyay
   company: Software Engineer, Healthifyme
-  link: https://twitter.com/Arpan____
+  link: https://x.com/Arpan____
   testimonial: >-
     This community helped me land my first software engineering job! Being
     active in the community, discussing problems and helping people has been the
@@ -116,7 +116,7 @@
     - EpicReact.dev
   cloudinaryId: kentcdodds.com/testimonials/diego-alvarez
   company: Ssr React Developer
-  link: https://twitter.com/doctordalvarez
+  link: https://x.com/doctordalvarez
   testimonial: >-
     The confidence and the solid concepts that I ve learned in EpicReact made me
     land my first react job this month. I nailed the technical interview and
@@ -128,7 +128,7 @@
     - EpicReact.dev
   cloudinaryId: kentcdodds.com/testimonials/jacob-m-g-evans
   company: Sr. FullStack Engineer
-  link: https://twitter.com/jacobmgevans
+  link: https://x.com/jacobmgevans
   testimonial: >-
     I used Epic React not to just upskill myself but I took the knowledge gained
     from the course and added them to patterns I showed coworkers and mentees.
@@ -211,7 +211,7 @@
   categories: [teaching]
   cloudinaryId: kentcdodds.com/testimonials/johannes
   company: Supreme Commander @ ProPro Productions
-  link: https://twitter.com/jo_HH_oe
+  link: https://x.com/jo_HH_oe
   testimonial: >-
     Thanks to Kent, I‘m very happy about how I use state management (with React
     Query) and many other tricks that make me a better programmer.
@@ -222,12 +222,12 @@
     - Discord Community
   cloudinaryId: kentcdodds.com/testimonials/azizbek-jonibekov
   company: Software Engineer at
-  link: https://twitter.com/jonybekov
+  link: https://x.com/jonybekov
   testimonial: >-
-    I was surprised of how KCD community is so friendly and supportive. I have
-    had some troubles with testing library and discovered KCD discord channel
-    and a lot of people there was ready to help. Kent has build an amazing
-    community in which members loves sharing a knowledge!
+    I was surprised of how Epic Web community is so friendly and supportive. I
+    have had some troubles with testing library and discovered Epic Web discord
+    channel and a lot of people there was ready to help. Kent has build an
+    amazing community in which members loves sharing a knowledge!
 
 - author: zhu baohua
   priority: 1
@@ -287,7 +287,7 @@
     - Discord Community
   cloudinaryId: kentcdodds.com/testimonials/yago-pereira-azevedo
   company: Software Engineer @BitGo
-  link: https://twitter.com/yagopereiraaz
+  link: https://x.com/yagopereiraaz
   testimonial: >-
     Kent's Discord community is amazing! Together with the Epic React workshop
     it took me too a different level in my career. The amount of knowledge
@@ -303,7 +303,7 @@
     - EpicReact.dev
   cloudinaryId: kentcdodds.com/testimonials/yago-pereira-azevedo
   company: Software Engineer @BitGo
-  link: https://twitter.com/yagopereiraaz
+  link: https://x.com/yagopereiraaz
   testimonial: >-
     You can call me an Epic React 🥑 (Advocate), there is no better React course
     around. Kent's approach to teaching is the one that resonates the most with
@@ -320,7 +320,7 @@
     - TestingJavaScript.com
   cloudinaryId: kentcdodds.com/testimonials/praveen-senadheera
   company: Software Engineer
-  link: https://twitter.com/Pro542
+  link: https://x.com/Pro542
   testimonial: >-
     I was able to use what I learned from TestingJavaScript.com to make
     productive changes in the testing culture in the team. The small video
@@ -462,7 +462,7 @@
     - Other
   cloudinaryId: kentcdodds.com/testimonials/wes-bos
   company: Fullstack Dev
-  link: https://twitter.com/wesbos/status/1609939724981911554
+  link: https://x.com/wesbos/status/1609939724981911554
   testimonial: >-
     Kent is gooda** at JS.
 
@@ -609,7 +609,7 @@
     - KCD Office Hours
   cloudinaryId: kentcdodds.com/testimonials/lydia-hendriks
   company: Software Engineer
-  link: https://twitter.com/LydiaHendriks
+  link: https://x.com/LydiaHendriks
   testimonial: >-
     Epic React gave me a lot more confidence as a developer and I was able to
     directly apply what I learned at my job. Not only do I produce higher
@@ -695,7 +695,7 @@
     - EpicWeb.dev
   cloudinaryId: kentcdodds.com/testimonials/michaël-de-boey
   company: Freelance full stack JavaScript/TypeScript & React engineer
-  link: https://twitter.com/MichaelDeBoey93
+  link: https://x.com/MichaelDeBoey93
   testimonial: >-
     Getting 14 days worth of full blown workshops for less than the price of 2
     days of workshops, EpicWeb.dev is worth every penny!
@@ -706,7 +706,7 @@
     - EpicWeb.dev
   cloudinaryId: kentcdodds.com/testimonials/devon-neill
   company: Full Stack Software Engineer and Consultant
-  link: https://twitter.com/devneill
+  link: https://x.com/devneill
   testimonial: >-
     I've been developing across the stack for around 5 years but there were
     always areas I never fully grasped.
@@ -764,3 +764,82 @@
     Epic Web workshops covers almost all the aspects of web development to help
     you build your own apps using Remix. After going through the workshops I
     have much better understanding of the web platform in general.
+
+- author: Andrew James
+  priority: 4
+  subjects:
+    - EpicWeb.dev
+    - EpicReact.dev
+  cloudinaryId: kentcdodds.com/testimonials/andrew-james
+  company: Senior Engineer, Coinbase
+  link: https://ajames.dev/
+  testimonial: >-
+    Kent's educational content has been a continual font of inspiration and
+    knowledge for me to draw upon over the years. After years of work, I was
+    promoted to Senior Engineer and he's been a cornerstone of my professional
+    development, and I consider him a giant upon whose shoulders I proudly
+    stand.
+
+
+    So I'd like to thank Kent for all of his contributions to the industry, and
+    for striving to make it - and the world - a better place.
+
+- author: Benjamin Matthews
+  priority: 4
+  subjects:
+    - EpicReact.dev
+  cloudinaryId: kentcdodds.com/testimonials/benjamin-matthews
+  company: Senior Developer
+  link: https://www.linkedin.com/in/benjamin-matthews-07320778/
+  testimonial: >-
+    Just wanted to say I finished the full Epic React and am very happy with the
+    results. I can finally understand a codebase I've been working on for a few
+    years primarily written by another god-tier React developer.
+
+
+    It was a super challenging codebase to follow before but Epic React touched
+    on every essential concept and now I no longer feel lost.
+
+
+    I had to re-train Front End after switching from Angular and I must say this
+    class has made it possible for me to re-tool and re-skill without getting
+    too discouraged by how much time it would normally take. THANK YOU KENT! You
+    are an AMAZING teacher!
+
+- author: Marco
+  priority: 4
+  subjects:
+    - EpicReact.dev
+    - EpicWeb.dev
+  cloudinaryId: kentcdodds.com/testimonials/marco
+  company: Full stack developer
+  link: https://github.com/Marcoj776
+  testimonial: >-
+    I started my career as a Junior frontend developer but CSS and JS couldn't
+    get me far. That's when I found Kent. He gave me the resources I needed to
+    take my skills to a much higher level to be able to offer far more. It was
+    like years of career experience packed into just several hours and I got
+    generous help via discord or office hours when I was stuck.
+
+
+    I started freelancing by offering to build full-stack web applications for
+    people, using the most modern techniques, built from The-Epic-Stack which I
+    can confidently work with because it I studied it directly in the course!
+
+
+    I refer to EpicReact.dev and EpicWeb.dev almost as much as I refer to MDN
+    it's that useful.
+
+- author: Elvinas
+  priority: 3
+  subjects:
+    - Blog
+    - Frontend Masters
+    - Egghead.io
+  cloudinaryId: kentcdodds.com/testimonials/elvinas
+  company: BacklogLab
+  link: https://backloglab.com/
+  testimonial: >-
+    Kent is a voice to listen to when it comes to web development. I loved his
+    Remix courses on Frontend Masters - great for anyone already seasoned in
+    React or just getting started.
